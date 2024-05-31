@@ -1,0 +1,28 @@
+places = [{"place":"Parque Chas", "lon": -58.479258, "lat": -34.582497},
+{"place":"UTN" , "lon": -58.468606, "lat": -34.658304},
+{"place":"ITBA Madero", "lon": -58.367862, "lat": -34.602938}];
+
+b. ¿Cuántos viajes se generaron a 1 km de distancia de estos 3 lugares?
+>GEOSEARCH bataxi
+    FROMLONLAT -58.479258 -34.582497 
+    BYRADIUS 1 km
+    ASC
+    WITHDIST
+    WITHCOORD
+
+339
+
+ASC y WithDist para verificar que efectivamente estan a 1 km
+
+c. ¿Cuántas KEYS hay en la base de datos Redis?
+> DBSIZE
+1
+
+d. ¿Cuántos miembros tiene la key 'bataxi'?
+> ZCARD bataxi
+19148
+
+e. ¿Sobre qué estructura de Redis trabaja el GeoADD?
+> TYPE bataxi
+zset 
+(sorted set)
